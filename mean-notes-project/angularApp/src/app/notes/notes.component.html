@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col s12">
+    <div class="card grey lighten-3 ">
+      <div class="card-content">
+        <div class="row">
+          <div class="col s4">
+            <table class="responsive-table highlight">
+                <thead>
+                  <tr>
+                    <th>Title</th>
+                    <th>Notes</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tr *ngFor="let note of notesService.notes">
+                  <td>{{note.title}}</td>
+                  <td class="ellipsis">{{note.body}}</td>
+                  <td class="centered">
+                      <a class="action-btn" (click)="onEdit(note)">
+                        <i class="material-icons">edit</i>
+                      </a>
+                      <a class="action-btn" (click)="onDelete(note._id,noteTemplate)">
+                        <i class="material-icons">delete</i>
+                      </a>
+                    </td>
+                </tr>
+              </table>
+          </div>
+          <div class="col s1"></div>
+          <div class="col s7">
+            <form #noteTemplate="ngForm" (ngSubmit)="onSubmit(noteTemplate)">
+              <!-- {{notesService.selectedNotes}} -->
+              <input type="hidden" name="_id" #_id="ngModel" [(ngModel)]="notesService.selectedNotes._id">
+              
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="text" name="title" #title="ngModel" [(ngModel)]="notesService.selectedNotes.title" placeholder="">
+                  <label>Title :</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea class="materialize-textarea" name="body" #notes="ngModel" [(ngModel)]="notesService.selectedNotes.body" placeholder=""> </textarea>
+                  <label>Notes :</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <button class="btn btn-custom right" type="submit" [disabled]="!noteTemplate.valid">Save</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

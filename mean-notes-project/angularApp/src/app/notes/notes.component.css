@@ -1,0 +1,15 @@
+.materialize-textarea{
+  height: 600px;
+}
+.ellipsis {
+  max-width: 40px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.centered{
+  text-align: center;
+}
+.btn-custom{
+  background-color: #0d47a1;
+}
